@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 using System.Globalization;
+using CsvHelper;
 
 namespace Prog_224_W24_CSV_030424
 {
@@ -107,50 +108,50 @@ namespace Prog_224_W24_CSV_030424
 
         } // Writing to a CSV
 
-        //public static void ReadingWithCSVHelper()
-        //{
-        //    List<Faculty> facultyList = new List<Faculty>();
-        //    string fileName = $@"{folderPath}FacultyCSV.csv";
+        public static void ReadingWithCSVHelper()
+        {
+            List<Faculty> facultyList = new List<Faculty>();
+            string fileName = $@"{folderPath}FacultyCSV.csv";
 
-        //    using (StreamReader sr = new StreamReader(fileName))
-        //        using(CsvReader csv = new CsvReader(sr, CultureInfo.InvariantCulture))
-        //    {
-        //        facultyList = csv.GetRecords<Faculty>().ToList();
-        //    }
+            using (StreamReader sr = new StreamReader(fileName))
+            using (CsvReader csv = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                facultyList = csv.GetRecords<Faculty>().ToList();
+            }
 
-        //    foreach (Faculty item in facultyList)
-        //    {
-        //        Console.WriteLine(item.ToString());
-        //    }
+            foreach (Faculty item in facultyList)
+            {
+                Console.WriteLine(item.ToString());
+            }
 
-        //}
+        }
 
-        //public static void WritingWithCSVHelper()
-        //{
-        //    List<Faculty> fac = new List<Faculty>()
-        //    {
-        //        new Faculty()
-        //        {
-        //            FirstName = "Will",
-        //            LastName = "Cram",
-        //            Profession = "CheeseMaker",
-        //            Senority = 1
-        //        }
-        //    };
+        public static void WritingWithCSVHelper()
+        {
+            List<Faculty> fac = new List<Faculty>()
+            {
+                new Faculty()
+                {
+                    FirstName = "Will",
+                    LastName = "Cram",
+                    Profession = "CheeseMaker",
+                    Senority = 1
+                }
+            };
 
-        //    using (var stream = File.Open($@"{folderPath}FacultyCSV.csv", FileMode.OpenOrCreate))
-        //    {
-        //        using (var writer = new StreamWriter(stream))
-        //        {
-        //            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
-        //            {
-        //                csvWriter.WriteRecords(fac);
+            using (var stream = File.Open($@"{folderPath}FacultyCSV.csv", FileMode.OpenOrCreate))
+            {
+                using (var writer = new StreamWriter(stream))
+                {
+                    using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    {
+                        csvWriter.WriteRecords(fac);
 
-        //                writer.Flush();
-        //            }
-        //        }
-        //    }
-        //}
+                        writer.Flush();
+                    }
+                }
+            }
+        }
 
         // Comprehension
 
